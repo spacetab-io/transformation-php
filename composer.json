@@ -1,0 +1,30 @@
+{
+  "name": "spacetab-io/transformation-php",
+  "description": "Basic transformation layer of any web-application.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "roquie",
+      "email": "roquie0@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9",
+    "phpstan/phpstan": "^0.12.5",
+    "symfony/var-dumper": "^5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Spacetab\\Transformation\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Spacetab\\Tests\\Transformation\\": "tests"
+    }
+  }
+}

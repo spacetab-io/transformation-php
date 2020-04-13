@@ -1,5 +1,5 @@
 {
-  "name": "spacetab-io/transformation-php",
+  "name": "spacetab-io/transformation-layer",
   "description": "Basic transformation layer of any web-application.",
   "type": "library",
   "license": "MIT",

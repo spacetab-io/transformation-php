@@ -9,7 +9,7 @@ Default transformation layer for most PHP applications.
 ## Installation
 
 ```bash
-composer install spacetab-io/transformation-php
+composer install spacetab-io/transformation-layer
 ```
 
 ## Usage

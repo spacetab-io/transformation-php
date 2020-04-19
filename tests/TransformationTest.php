@@ -117,5 +117,8 @@ class TransformationTest extends TestCase
         $truth['error']['message'] = 'Custom message';
 
         $this->assertSame($truth, $transform->doTransform());
+
+        $error->clean();
+        $this->assertSame([], $error->getErrors());
     }
 }

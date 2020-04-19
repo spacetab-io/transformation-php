@@ -29,4 +29,9 @@ final class ValidationError
     {
         return $this->messages;
     }
+
+    public function clean(): void
+    {
+        $this->messages = [];
+    }
 }

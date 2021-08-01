@@ -15,14 +15,14 @@ composer install spacetab-io/transformation-layer
 ## Usage
 
 ```php
-use Spacetab\Transformation\ValidationError;
-use Spacetab\Transformation\ValidationTransformation;
+use Spacetab\Item\ValidationError;
+use Spacetab\Item\Validation;
 
 $error = new ValidationError();
 $error->addError('user.first_name', 'Minimal length allowed is 2 symbols.');
 $error->addError('user.first_name', 'Must be like regular expression /[a-zA-Z]+/.');
 
-$transform = new ValidationTransformation($error);
+$transform = new Validation($error);
 $transform->doTransform(); // return transformed data (mixed type)
 ```
 

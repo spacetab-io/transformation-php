@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spacetab\Transformation;
+namespace Spacetab\Transformation\Misc;
 
 interface PaginationViewInterface
 {

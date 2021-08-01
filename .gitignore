@@ -3,3 +3,4 @@ vendor/
 .phpunit.result.cache
 .DS_Store
 composer.lock
+index.php

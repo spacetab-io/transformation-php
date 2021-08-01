@@ -12,10 +12,10 @@ final class Transformer
     private Walker $rootWalker;
     private Walker $nestedWalker;
 
-    public function __construct(?WrapperInterface $rootWalker = null, ?WrapperInterface $nestedWalker = null)
+    public function __construct(?WrapperInterface $rootWrapper = null, ?WrapperInterface $nestedWrapper = null)
     {
-        $this->setRootWrapper($rootWalker ?: new NullWrapper);
-        $this->setNestedWrapper($nestedWalker ?: new NullWrapper);
+        $this->setRootWrapper($rootWrapper ?: new NullWrapper);
+        $this->setNestedWrapper($nestedWrapper ?: new NullWrapper);
     }
 
     public function setRootWrapper(WrapperInterface $wrapper): void

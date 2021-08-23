@@ -13,21 +13,25 @@ final class ErrorTransformer implements TransformInterface
 
     private string $message;
     private int|string $code;
+    private array $stacktrace;
 
     public function __construct(
         string $message = self::ERROR_OCCURRED_IN_APP,
-        int|string $code = self::DEFAULT_ERROR_CODE
+        int|string $code = self::DEFAULT_ERROR_CODE,
+        array $stacktrace = [],
     ) {
         $this->message = $message;
         $this->code = $code;
+        $this->stacktrace = $stacktrace;
     }
 
     public function transform(mixed $value = null): array
     {
         return [
             'error' => [
-                'message' => $this->message,
-                'code'    => $this->code,
+                'message'    => $this->message,
+                'code'       => $this->code,
+                'stacktrace' => $this->stacktrace,
             ]
         ];
     }

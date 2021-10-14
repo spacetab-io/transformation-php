@@ -25,7 +25,7 @@ final class Transformer
 
     public function setNestedWrapper(WrapperInterface $wrapper): void
     {
-        $this->nestedWalker = new Walker($wrapper);
+        $this->nestedWalker = new Walker($wrapper, true);
     }
 
     public function disableWrapper(bool $root = true, bool $nested = true): self

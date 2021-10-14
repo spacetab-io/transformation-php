@@ -9,11 +9,16 @@ use Spacetab\Transformation\Wrapper\WrapperInterface;
 final class Walker
 {
     public function __construct(
-        private WrapperInterface $wrapper
+        private WrapperInterface $wrapper,
+        private bool $pushDeeper = false
     ) {}
 
     public function item(TransformInterface $transform, mixed $value): mixed
     {
+        if ($this->pushDeeper && $transform instanceof WalkAwareInterface) {
+            $transform->setWalker($this);
+        }
+
         return $this->wrapper->item(
             $transform->transform($value)
         );
@@ -21,6 +26,10 @@ final class Walker
 
     public function collection(TransformInterface $transform, array $items): array
     {
+        if ($this->pushDeeper && $transform instanceof WalkAwareInterface) {
+            $transform->setWalker($this);
+        }
+
         $array = [];
         foreach ($items as $item) {
             $array[] = $transform->transform($item);

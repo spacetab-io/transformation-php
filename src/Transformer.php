@@ -52,7 +52,7 @@ final class Transformer
         return $this->rootWalker->item($transform, $data);
     }
 
-    public function asCollection(TransformInterface $transform, array $items = []): array
+    public function asCollection(TransformInterface $transform, iterable $items = []): array
     {
         if ($transform instanceof WalkAwareInterface) {
             $transform->setWalker($this->nestedWalker);

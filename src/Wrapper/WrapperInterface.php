@@ -7,5 +7,5 @@ namespace Spacetab\Transformation\Wrapper;
 interface WrapperInterface
 {
     public function item(mixed $value): mixed;
-    public function collection(array $items): array;
+    public function collection(iterable $items): iterable;
 }

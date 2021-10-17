@@ -15,7 +15,7 @@ final class DataWrapper implements WrapperInterface
         ];
     }
 
-    public function collection(array $items): array
+    public function collection(iterable $items): iterable
     {
         return [
             self::KEY => $items

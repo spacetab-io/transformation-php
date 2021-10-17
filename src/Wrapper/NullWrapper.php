@@ -11,7 +11,7 @@ final class NullWrapper implements WrapperInterface
         return $value;
     }
 
-    public function collection(array $items): array
+    public function collection(iterable $items): iterable
     {
         return $items;
     }

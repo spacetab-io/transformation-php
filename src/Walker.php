@@ -24,7 +24,7 @@ final class Walker
         );
     }
 
-    public function collection(TransformInterface $transform, array $items): array
+    public function collection(TransformInterface $transform, iterable $items): array
     {
         if ($this->pushDeeper && $transform instanceof WalkAwareInterface) {
             $transform->setWalker($this);

@@ -5,18 +5,27 @@ declare(strict_types=1);
 namespace Spacetab\Transformation\Misc;
 
 use Spacetab\Transformation\TransformInterface;
+use Spacetab\Transformation\WalkAwareInterface;
+use Spacetab\Transformation\WalkAwareTrait;
 
-final class PaginateTransformer implements TransformInterface
+final class PaginateTransformer implements TransformInterface, WalkAwareInterface
 {
+    use WalkAwareTrait;
+
     public const CAMEL_CASE = 0;
     public const SNAKE_CASE = 1;
 
     private PaginationViewInterface $paginationView;
+    private TransformInterface $itemsTransformer;
     private int $style;
 
-    public function __construct(PaginationViewInterface $view, int $style = self::CAMEL_CASE)
-    {
+    public function __construct(
+        PaginationViewInterface $view,
+        TransformInterface      $itemsTransformer,
+        int                     $style = self::CAMEL_CASE
+    ) {
         $this->paginationView = $view;
+        $this->itemsTransformer = $itemsTransformer;
         $this->style = $style;
     }
 
@@ -24,7 +33,7 @@ final class PaginateTransformer implements TransformInterface
     {
         if ($this->style === self::CAMEL_CASE) {
             return [
-                'data' => $this->paginationView->getItems(),
+                'data' => $this->walker->collection($this->itemsTransformer, $value),
                 'meta' => [
                     'pagination' => [
                         'total'       => $this->paginationView->getCount(),
@@ -39,7 +48,7 @@ final class PaginateTransformer implements TransformInterface
         }
 
         return [
-            'data' => $this->paginationView->getItems(),
+            'data' => $this->walker->collection($this->itemsTransformer, $value),
             'meta' => [
                 'pagination' => [
                     'total'        => $this->paginationView->getCount(),

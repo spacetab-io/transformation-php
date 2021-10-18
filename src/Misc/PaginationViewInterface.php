@@ -6,7 +6,6 @@ namespace Spacetab\Transformation\Misc;
 
 interface PaginationViewInterface
 {
-    public function getItems(): array;
     public function getCount(): int;
     public function getPerPage(): int;
     public function getPage(): int;

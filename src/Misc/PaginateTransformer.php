@@ -52,7 +52,7 @@ final class PaginateTransformer implements TransformInterface, WalkAwareInterfac
                 ]
             ];
 
-            return array_merge($array, $this->values);
+            return array_merge_recursive($array, $this->values);
         }
 
         $array = [
@@ -69,6 +69,6 @@ final class PaginateTransformer implements TransformInterface, WalkAwareInterfac
             ]
         ];
 
-        return array_merge($array, $this->values);
+        return array_merge_recursive($array, $this->values);
     }
 }

@@ -18,6 +18,7 @@ final class PaginateTransformer implements TransformInterface, WalkAwareInterfac
     private PaginationViewInterface $paginationView;
     private TransformInterface $itemsTransformer;
     private int $style;
+    private array $values = [];
 
     public function __construct(
         PaginationViewInterface $view,
@@ -29,10 +30,15 @@ final class PaginateTransformer implements TransformInterface, WalkAwareInterfac
         $this->style = $style;
     }
 
+    public function withValues(array $values): void
+    {
+        $this->values = $values;
+    }
+
     public function transform(mixed $value = null): array
     {
         if ($this->style === self::CAMEL_CASE) {
-            return [
+            $array = [
                 'data' => $this->walker->collection($this->itemsTransformer, $value),
                 'meta' => [
                     'pagination' => [
@@ -45,9 +51,11 @@ final class PaginateTransformer implements TransformInterface, WalkAwareInterfac
                     ]
                 ]
             ];
+
+            return array_merge($array, $this->values);
         }
 
-        return [
+        $array = [
             'data' => $this->walker->collection($this->itemsTransformer, $value),
             'meta' => [
                 'pagination' => [
@@ -60,5 +68,7 @@ final class PaginateTransformer implements TransformInterface, WalkAwareInterfac
                 ]
             ]
         ];
+
+        return array_merge($array, $this->values);
     }
 }

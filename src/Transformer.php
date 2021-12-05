@@ -43,19 +43,19 @@ final class Transformer
         return $that;
     }
 
-    public function asItem(TransformInterface $transform, mixed $data = null): mixed
+    public function asItem(TransformInterface $transform, mixed $data = null, array $options = []): mixed
     {
         if ($transform instanceof WalkAwareInterface) {
-            $transform->setWalker($this->nestedWalker);
+            $transform->setWalker($this->nestedWalker->withOptions($options));
         }
 
         return $this->rootWalker->item($transform, $data);
     }
 
-    public function asCollection(TransformInterface $transform, iterable $items = []): iterable
+    public function asCollection(TransformInterface $transform, iterable $items = [], array $options = []): iterable
     {
         if ($transform instanceof WalkAwareInterface) {
-            $transform->setWalker($this->nestedWalker);
+            $transform->setWalker($this->nestedWalker->withOptions($options));
         }
 
         return $this->rootWalker->collection($transform, $items);

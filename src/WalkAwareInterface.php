@@ -6,5 +6,7 @@ namespace Spacetab\Transformation;
 
 interface WalkAwareInterface
 {
+    public const WALKER_DEFAULTS = [];
+
     public function setWalker(Walker $walker): void;
 }

@@ -6,7 +6,7 @@ namespace Spacetab\Transformation;
 
 trait WalkAwareTrait
 {
-    protected ?Walker $walker = null;
+    protected Walker $walker;
 
     public function setWalker(Walker $walker): void
     {
